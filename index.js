@@ -4,7 +4,13 @@ var each = require('amp-each');
 
 module.exports = function (target) {
   if (Array.isArray(target)) {
-    return Promise.all(target.map(hopeful));  
+    return Promise.all(target.map(hopeful)).then(function(values) {
+      var hasError = values.some(function(x) { return x instanceof Error; });
+      
+      if (hasError) return Promise.reject(values);
+
+      return values;
+    });  
   }
 
 
@@ -21,9 +27,13 @@ module.exports = function (target) {
     
     var result = {};
 
+    var hasError = values.some(function(x) { return x instanceof Error; });
+
     each(keys, function(key) {
       result[key] = values[index ++];
     });
+
+    if (hasError) return Promise.reject(result);
 
     return result; 
   });

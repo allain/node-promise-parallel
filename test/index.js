@@ -14,18 +14,18 @@ describe('promise-parallel', function() {
     }, done); 
   });
   
-  it('resolves a simple array with e rejection in it', function(done) {
+  it('rejects a simple array with a rejection in it', function(done) {
     parallel([
       Promise.reject('baaah'),
       true,
       false
-    ]).then(function(result) {
+    ]).catch(function(result) {
       assert(result[0] instanceof Error);
       assert.equal(result[0].message, 'baaah');
       assert.equal(result[1], true);
       assert.equal(result[2], false);
       done();
-    }, done); 
+    }); 
   });
   
   it('resolves a simple hash with no errors', function(done) {
@@ -39,13 +39,13 @@ describe('promise-parallel', function() {
     }, done); 
   });
 
-  it('resolves a simple hash with an error in it', function(done) {
+  it('rejects a simple hash with an error in it', function(done) {
     parallel({
       a: Promise.reject(new Error('a')),
       b: Promise.reject('baah'),
       c: Promise.reject(),
       d: false
-    }).then(function(result) {
+    }).catch(function(result) {
       assert(result.a instanceof Error);
       assert(result.b instanceof Error);
       assert(result.c instanceof Error);

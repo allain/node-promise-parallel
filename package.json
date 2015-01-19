@@ -1,7 +1,7 @@
 {
   "name": "promise-parallel",
   "version": "1.0.0",
-  "description": "A helper for performing Promises in parallel, does not bail is one of them fails, it resolves it as an error instead",
+  "description": "A helper for performing Promises in parallel, does not bail if one of them fails, it does them all, returning the fulfilled value",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha"

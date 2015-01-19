@@ -1,6 +1,6 @@
 # promise-parallel
 
-A helper for performing Promises in parallel, does not bail is one of them fails, it resolves it as an error instead
+A helper for performing Promises in parallel, does not bail if one of them fails, it doe them all, then returns the fulfilled values.
 
 [![build status](https://secure.travis-ci.org/allain/promise-parallel.png)](http://travis-ci.org/allain/promise-parallel)
 
@@ -20,14 +20,14 @@ var parallel = require('promise-parallel');
 parallel([
   Promise.resolve(true),
   Promise.reject('baah')
-]).then(function(result) {
+]).catch(function(result) {
   console.log(result); //=> true, [Error: baah]
 });
 
 parallel({
   a: Promise.resolve(true),
   b: Promise.reject('baah')
-}).then(function(result) {
+}).catch(function(result) {
   console.log(result); //=> {a: true, b: [Error: baah]}
 });
 ```
