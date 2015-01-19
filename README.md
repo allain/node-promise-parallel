@@ -2,7 +2,7 @@
 
 A helper for performing Promises in parallel, does not bail if one of them fails, it doe them all, then returns the fulfilled values.
 
-[![build status](https://secure.travis-ci.org/allain/promise-parallel.png)](http://travis-ci.org/allain/promise-parallel)
+[![build status](https://secure.travis-ci.org/allain/node-promise-parallel.png)](http://travis-ci.org/allain/node-promise-parallel)
 
 ## Installation
 
