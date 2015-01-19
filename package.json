@@ -1,6 +1,6 @@
 {
   "name": "promise-parallel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A helper for performing Promises in parallel, does not bail if one of them fails, it does them all, returning the fulfilled value",
   "main": "index.js",
   "scripts": {
